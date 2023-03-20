@@ -95,7 +95,7 @@ def main():
                     img_id = file_name.split('.')[0]
                     img_pred = model(image.unsqueeze(0)).item()
                     print(file_name, "cat" if img_pred<0.5 else "dog")
-                    results['id'].append(img_id)
+                    results['id'].append(img_id.split("/")[1])
                     results['label'].append(img_pred)
 
     # for file_name in os.listdir(image_dir):
