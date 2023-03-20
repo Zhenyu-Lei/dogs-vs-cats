@@ -118,6 +118,16 @@ num_epochs, lr, weight_decay, batch_size = 10, 5, 0, 16
         print(f"在epoch{epoch}轮训练中,测试集正确率为:{train_acc},验证集正确率为:{val_acc}")
 ```
 
-定义好超参以及损失，BCELoss是二分类交叉损失
+定义好超参以及损失，BCELoss是二分类交叉损失，预测值是一个p∈[0,1]
+$$
+loss=y_ilogp_i+(1-y_i)log(1-p_i)
+$$
+然后进行迭代训练即可。实际只训练了一轮（摸鱼）
 
 #### 改进方向
+
+- 在图片不同位置进行裁剪，以提高泛化性
+
+- 使用GPU训练，将model和data都放到了“cuda:0”上，但是没有用到GPU，需要去解决这个问题
+
+  <img src="README.assets/image-20230320131717945.png" alt="image-20230320131717945" style="zoom:25%;" />
