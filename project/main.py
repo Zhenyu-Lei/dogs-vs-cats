@@ -49,11 +49,11 @@ def main():
     train_iter = DataLoader(train_dataset, batch_size=16, shuffle=True, num_workers=4)
     val_iter = DataLoader(val_dataset, batch_size=16, shuffle=True, num_workers=4)
 
-    num_epochs, lr, weight_decay, batch_size = 10, 5, 0, 16
+    num_epochs, lr, weight_decay, batch_size = 10, 0.0005, 0, 16
     model = ResNet18()
     # 进行训练
     loss = nn.BCELoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=weight_decay)
+    optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     # 将model放到GPU上
     model.to(device)
